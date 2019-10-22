@@ -7,19 +7,23 @@ import {
   WebView,
   ScrollView
 } from 'react-native'
-// import Header from './Header'
-// import Arithmetic from './Arithmetic'
+import Header from './Header'
+import Arithmetic from './Sum'
 
 class Simulator extends React.Component {
   render () {
     return (
       <ScrollView>
         <View style={styles.container}>
-          {/* <Header /> */}
+          <Header />
 
           <View style={styles.subContainer}>
-            {/* <Arithmetic /> */}
+            <Sum />
 
+            <Text> Add element </Text>
+            <Text> Add element </Text>
+            <Text> Add element </Text>
+            <Text> Add element </Text>
             <Text> Add element </Text>
           </View>
         </View>

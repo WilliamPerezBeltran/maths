@@ -10,7 +10,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
     Home: {
       screen: Simulator,
       navigationOptions: {
-        tabBarLabel: 'Simulador',
+        tabBarLabel: 'Sum',
         tabBarIcon: ({ tintColor }) => (
           <View>
             <Icon style={[{ color: tintColor }]} size={25} name='ios-home' />
