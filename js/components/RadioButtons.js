@@ -20,20 +20,21 @@ class RadioButtons extends React.Component {
     const { options } = this.props
     const { value } = this.state
     return (
-      <View style={styles.buttonContainer}>
-        {options.map(item => {
+      <View style={styles.row}>
+        {options.map((item, index) => {
           return (
-            <View key={item.id} style={styles.button}>
-              <TouchableOpacity
-                style={styles.circle}
-                onPress={() => {
-                  this.setState({ value: item.id })
-                }}
-              >
+            <TouchableOpacity
+              style={styles.buttonContainer}
+              key={item.id}
+              onPress={() => {
+                this.setState({ value: item.id })
+              }}
+            >
+              <View key={item.id} style={styles.circle}>
                 {value === item.id && <View style={styles.checkedCircle} />}
-              </TouchableOpacity>
-              <Text style={styles.textButton}>{item.text} </Text>
-            </View>
+              </View>
+              <Text>{item.text}</Text>
+            </TouchableOpacity>
           )
         })}
       </View>
@@ -47,24 +48,32 @@ var dimension = {
 }
 
 const styles = StyleSheet.create({
-  buttonContainer: {
-    // borderColor: 'black',
-    // borderWidth: 1,
-    flexDirection: 'row',
+  row: {
     width: '100%',
-    justifyContent: 'space-between'
-  },
-  button: {
-    padding: 1,
-    width: '20%',
-    borderWidth: 1,
-    borderColor: '#ACACAC',
-    justifyContent: 'center',
+    flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 10
+    justifyContent: 'space-between',
+    flexWrap: 'wrap'
+  },
+  buttonContainer: {
+    marginTop: 10,
+    padding: 5,
+    borderRadius: 5,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    minWidth: '20%',
+    borderWidth: 2,
+    borderColor: 'hsla(223, 12%, 89%, 1)',
+    flexDirection: 'column'
+  },
+  setBorder: {
+    borderColor: 'hsla(223, 12%, 89%, 1)'
+  },
+  setActiveBorder: {
+    borderColor: 'rgb(76, 154, 255);'
   },
   circle: {
-    marginTop: 3,
     height: 20,
     width: 20,
     borderRadius: 10,
@@ -78,12 +87,6 @@ const styles = StyleSheet.create({
     height: 10,
     borderRadius: 5,
     backgroundColor: '#737373'
-  },
-  textButton: {
-    marginTop: 5,
-    width: '100%',
-    minHeight: 40,
-    textAlign: 'center'
   }
 })
 
