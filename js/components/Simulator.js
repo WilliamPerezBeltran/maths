@@ -8,7 +8,7 @@ import {
   ScrollView
 } from 'react-native'
 import Header from './Header'
-import Arithmetic from './Sum'
+import Sum from './Sum'
 
 class Simulator extends React.Component {
   render () {
@@ -16,15 +16,8 @@ class Simulator extends React.Component {
       <ScrollView>
         <View style={styles.container}>
           <Header />
-
           <View style={styles.subContainer}>
             <Sum />
-
-            <Text> Add element </Text>
-            <Text> Add element </Text>
-            <Text> Add element </Text>
-            <Text> Add element </Text>
-            <Text> Add element </Text>
           </View>
         </View>
       </ScrollView>
