@@ -4,6 +4,15 @@ import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native'
 import Voice from 'react-native-voice';
 
 class VoiceTest extends Component {
+  state = {
+    recognized: '',
+    pitch: '',
+    error: '',
+    end: '',
+    started: '',
+    results: [],
+    partialResults: [],
+  };
 
   constructor(props) {
     super(props);
@@ -14,16 +23,6 @@ class VoiceTest extends Component {
     Voice.onSpeechResults = this.onSpeechResults;
     Voice.onSpeechPartialResults = this.onSpeechPartialResults;
     Voice.onSpeechVolumeChanged = this.onSpeechVolumeChanged;
-     this.state={
-      recognized: '',
-      pitch: '',
-      error: '',
-      end: '',
-      started: '',
-      results: [],
-      partialResults: [],
-
-    }
   }
 
   componentWillUnmount() {
@@ -98,8 +97,9 @@ class VoiceTest extends Component {
     });
 
     try {
-      await Voice.start('es-ES');
+      await Voice.start('en-US');
     } catch (e) {
+      //eslint-disable-next-line
       console.error(e);
     }
   };
@@ -143,10 +143,13 @@ class VoiceTest extends Component {
   render() {
     return (
       <View style={styles.container}>
-      {/*
+        <Text style={styles.welcome}>Welcome to React Native Voice!</Text>
+        <Text style={styles.instructions}>Press the button and start speaking.</Text>
+        <Text style={styles.stat}>{`Started: ${this.state.started}`}</Text>
+        <Text style={styles.stat}>{`Recognized: ${this.state.recognized}`}</Text>
+        <Text style={styles.stat}>{`Pitch: ${this.state.pitch}`}</Text>
+        <Text style={styles.stat}>{`Error: ${this.state.error}`}</Text>
         <Text style={styles.stat}>Results</Text>
-
-      */}
         {this.state.results.map((result, index) => {
           return (
             <Text key={`result-${index}`} style={styles.stat}>
@@ -154,8 +157,6 @@ class VoiceTest extends Component {
             </Text>
           );
         })}
-      {/*
-
         <Text style={styles.stat}>Partial Results</Text>
         {this.state.partialResults.map((result, index) => {
           return (
@@ -164,11 +165,19 @@ class VoiceTest extends Component {
             </Text>
           );
         })}
-      */}
+        <Text style={styles.stat}>{`End: ${this.state.end}`}</Text>
         <TouchableHighlight onPress={this._startRecognizing}>
-          <Text style={styles.action}>Press bototn</Text>
+          <Text style={styles.action}>oeeeeee perra</Text>
         </TouchableHighlight>
-        
+        <TouchableHighlight onPress={this._stopRecognizing}>
+          <Text style={styles.action}>Stop Recognizing</Text>
+        </TouchableHighlight>
+        <TouchableHighlight onPress={this._cancelRecognizing}>
+          <Text style={styles.action}>Cancel</Text>
+        </TouchableHighlight>
+        <TouchableHighlight onPress={this._destroyRecognizer}>
+          <Text style={styles.action}>Destroy</Text>
+        </TouchableHighlight>
       </View>
     );
   }
