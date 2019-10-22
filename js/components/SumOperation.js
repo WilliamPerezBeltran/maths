@@ -13,6 +13,7 @@ import Header from './Header'
 import Sum from './Sum'
 import RadioButtons from './RadioButtons'
 import * as Constants from '../Constants'
+import InputVoice from './InputVoice'
 
 class SumOperation extends React.Component {
   render () {
@@ -20,21 +21,7 @@ class SumOperation extends React.Component {
 
       <View>
         <View>
-          <TextInput
-            style={styles.input}
-            underlineColorAndroid='transparent'
-            placeholder='Element +'
-            placeholderTextColor='gray'
-            autoCapitalize='none'
-            keyboardType='numeric'
-            value='ddddddd'
-          />
-          <TouchableOpacity
-            style={styles.submitButton}
-            onPress={() => this.addTag(this.state.tag)}
-          >
-            <Text style={styles.submitButtonText}> Add element </Text>
-          </TouchableOpacity>
+          <InputVoice />
         </View>
 
         <View style={styles.container}>
