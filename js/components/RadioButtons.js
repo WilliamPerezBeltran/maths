@@ -48,8 +48,8 @@ var dimension = {
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    borderColor: 'black',
-    borderWidth: 1,
+    // borderColor: 'black',
+    // borderWidth: 1,
     flexDirection: 'row',
     width: '100%',
     justifyContent: 'space-between'
@@ -62,9 +62,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10
-    // flexGrow: 0,
-    // flexShrink: 0,
-    // flexBasis: '22%'
   },
   circle: {
     marginTop: 3,
