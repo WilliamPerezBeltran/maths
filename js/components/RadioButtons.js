@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Dimensions
 } from 'react-native'
+import store from './Store'
 
 class RadioButtons extends React.Component {
   constructor (props) {
@@ -14,6 +15,15 @@ class RadioButtons extends React.Component {
     this.state = {
       value: null
     }
+  }
+
+  selectDigit = (id)=>{
+    this.setState({ value: id })
+    store.dispatch({
+      type:'selectDigit',
+      digit:id
+    })
+
   }
 
   render () {
@@ -26,9 +36,7 @@ class RadioButtons extends React.Component {
             <TouchableOpacity
               style={styles.buttonContainer}
               key={item.id}
-              onPress={() => {
-                this.setState({ value: item.id })
-              }}
+              onPress={() => this.selectDigit(item.id)}
             >
               <View key={item.id} style={styles.circle}>
                 {value === item.id && <View style={styles.checkedCircle} />}
