@@ -1,19 +1,26 @@
 import React, { Component } from 'react'
 import { Platform, StyleSheet, Text, View, WebView } from 'react-native'
 import Header from './Header'
-import Sum from './Sum'
+// import Sum from './Sum'
 import RadioButtons from './RadioButtons'
 import * as Constants from '../Constants'
 import SumOperation from './SumOperation'
+import StartSum from './StartSum'
 
-class Simulator extends React.Component {
+class Sum extends React.Component {
   render () {
     return (
       <View style={styles.container}>
         <View style={styles.containerRadioButtons}>
           <RadioButtons options={Constants.options} />
         </View>
-        <SumOperation />
+        <View>
+          <SumOperation />
+        </View>
+
+        <View>
+          <StartSum />
+        </View>
         <Text>Maths </Text>
 
       </View>
@@ -31,4 +38,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Simulator
+export default Sum
