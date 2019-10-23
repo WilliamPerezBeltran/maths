@@ -14,26 +14,43 @@ import Sum from './Sum'
 import RadioButtons from './RadioButtons'
 import * as Constants from '../Constants'
 import InputVoice from './InputVoice'
+import store from './Store'
 
 class SumOperation extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      a: '',
+      b: '',
+      result: ''
+
+    }
+
+    store.subscribe(() => {
+      this.setState({
+        a: store.getState().a,
+        b: store.getState().b,
+        result: store.getState().result
+      })
+    })
+  }
+
   render () {
     return (
-
       <View>
         <View>
           <InputVoice />
         </View>
 
         <View style={styles.container}>
-
           <View style={styles.numberBox}>
-            <Text style={styles.text}>1000</Text>
+            <Text style={styles.text}>{this.state.a}</Text>
           </View>
           <View style={styles.signBox}>
             <Text style={styles.text}>+</Text>
           </View>
           <View style={styles.numberBox}>
-            <Text style={styles.text}>1</Text>
+            <Text style={styles.text}>{this.state.b}</Text>
           </View>
           <View style={styles.signBox}>
             <Text style={styles.text}>=</Text>
@@ -45,7 +62,6 @@ class SumOperation extends React.Component {
             <Text style={styles.text}>✓</Text>
             <Text style={styles.text}>+</Text>
           </View>
-
         </View>
       </View>
     )
@@ -96,7 +112,6 @@ const styles = StyleSheet.create({
     borderColor: '#B8B8B8',
     borderWidth: 2
   }
-
 })
 
 export default SumOperation
