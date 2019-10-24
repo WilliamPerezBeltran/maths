@@ -24,7 +24,6 @@ class SumOperation extends React.Component {
       b: '?',
       result: '',
       voiceResult: ''
-
     }
 
     store.subscribe(() => {
@@ -43,7 +42,12 @@ class SumOperation extends React.Component {
     console.log('b: ' + this.state.b)
     console.log('result: ' + this.state.result.length)
     console.log('voiceResult: ' + this.state.voiceResult.length)
-    if (this.state.result.length === 0 || this.state.voiceResult.length === 0 || this.state.voiceResult === undefined) {
+    if (
+      this.state.result.length === 0 ||
+      this.state.voiceResult.length === 0 ||
+      this.state.voiceResult === undefined ||
+      this.state.voiceResult === '?'
+    ) {
       signAnswer = <Text style={styles.text}>?</Text>
     } else if (this.state.result === this.state.voiceResult) {
       signAnswer = <Text style={styles.textRight}>✓</Text>
@@ -53,7 +57,6 @@ class SumOperation extends React.Component {
 
     return (
       <View>
-
         <View style={styles.container}>
           <View style={styles.numberBox}>
             <Text style={styles.text}>{this.state.a}</Text>
@@ -70,10 +73,7 @@ class SumOperation extends React.Component {
           <View style={styles.answerBox}>
             <Text style={styles.text}>{this.state.voiceResult}</Text>
           </View>
-          <View style={styles.answerBox}>
-            {signAnswer}
-
-          </View>
+          <View style={styles.answerBox}>{signAnswer}</View>
         </View>
       </View>
     )
@@ -115,17 +115,16 @@ const styles = StyleSheet.create({
     borderRadius: 10
   },
   text: {
-    fontSize: 40,
+    fontSize: 35,
     fontWeight: 'bold'
   },
   textRight: {
-    fontSize: 40,
+    fontSize: 35,
     fontWeight: 'bold',
     color: 'green'
-
   },
   textWrong: {
-    fontSize: 40,
+    fontSize: 35,
     fontWeight: 'bold',
     color: '#e71d36',
     transform: [{ rotate: '42deg' }]

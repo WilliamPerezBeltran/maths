@@ -18,19 +18,29 @@ class StartSum extends React.Component {
   }
 
   sumStart = () => {
-    this._startRecognizing();
-    console.log("inicio eel proceso de la usma ");
-    console.log();
-    const getDigitState = store.getState().digit;
+    this.clearState();
+    this.startRecognizing();
 
-    if (getDigitState == 0) {
-      const a = this.getRandomInt(0, 10);
-      const b = this.getRandomInt(0, 10);
+    if (store.getState().digit == 0) {
+      // Sum of a digit
+      this.setSumRange(0, 9);
+    } else if (store.getState().digit == 1) {
+      // Sum of two digits
+      this.setSumRange(10, 99);
+    } else if (store.getState().digit == 2) {
+      // Sum of three digits
+      this.setSumRange(100, 999);
+    } else if (store.getState().digit == 3) {
+      // Sum of four digits
+      this.setSumRange(1000, 9999);
+    }
+  };
+
+  setSumRange = (lowerLimit, upperLimit) => {
+    try {
+      const a = this.getRandomInt(lowerLimit, upperLimit);
+      const b = this.getRandomInt(lowerLimit, upperLimit);
       const result = a + b;
-      console.log("sumstart");
-      console.log(a);
-      console.log(b);
-      console.log(result);
 
       store.dispatch({
         type: "getAgetBgetResult",
@@ -38,10 +48,23 @@ class StartSum extends React.Component {
         b: b,
         result: result
       });
+    } catch (e) {
+      console.error(e);
     }
   };
 
-  _startRecognizing = async () => {
+  clearState = async () => {
+    try {
+      store.dispatch({
+        type: "clearState",
+        voiceResult: "?"
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  startRecognizing = async () => {
     try {
       await Voice.start("es-ES");
     } catch (e) {

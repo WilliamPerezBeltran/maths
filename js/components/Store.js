@@ -7,15 +7,16 @@ const reducer = (state, action) => {
       digit: action.digit
     }
   } else if (action.type === 'getAgetBgetResult') {
-    console.log('SSTORE')
-    console.log(action.a)
-    console.log(action.b)
-    console.log(action.result)
     return {
       ...state,
       a: action.a,
       b: action.b,
-      result: action.result
+      result: action.result.toString()
+    }
+  } else if (action.type === 'clearState') {
+    return {
+      ...state,
+      voiceResult: action.voiceResult
     }
   } else if (action.type === 'voiceResult') {
     return {
@@ -27,4 +28,11 @@ const reducer = (state, action) => {
   return state
 }
 
-export default createStore(reducer, { tag: [], digit: null, a: '?', b: '?', result: '', voiceResult: '' })
+export default createStore(reducer, {
+  tag: [],
+  digit: null,
+  a: '?',
+  b: '?',
+  result: '',
+  voiceResult: ''
+})
