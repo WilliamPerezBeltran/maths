@@ -17,9 +17,14 @@ const reducer = (state, action) => {
       b: action.b,
       result: action.result
     }
+  } else if (action.type === 'voiceResult') {
+    return {
+      ...state,
+      voiceResult: action.voiceResult[0]
+    }
   }
 
   return state
 }
 
-export default createStore(reducer, { tag: [], digit: null, a: null, b: null, result: null })
+export default createStore(reducer, { tag: [], digit: null, a: '?', b: '?', result: '', voiceResult: '' })
