@@ -20,7 +20,7 @@ class Simulator extends React.Component {
           </View>
           <View style={styles.maincontainer}>
             <View style={styles.containerTitle}>
-              <Text style={styles.textTitle}> Practicing sum  </Text>
+              <Text style={styles.textTitle}> Practicando la suma </Text>
             </View>
             <View style={styles.containerSum}>
               <Sum />

@@ -21,7 +21,6 @@ class Sum extends React.Component {
         <View>
           <StartSum />
         </View>
-        <Text>Maths </Text>
 
       </View>
     )

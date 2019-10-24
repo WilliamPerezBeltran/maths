@@ -9,7 +9,7 @@ class Header extends React.Component {
   render () {
     return (
       <View style={styles.appHeader}>
-        <Text style={styles.textHeader}>Maths </Text>
+        <Text style={styles.textHeader}>Matemáticas</Text>
       </View>
     )
   }
